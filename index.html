@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voto casa (Trieste)</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div class="flex">
+    <h1>Voto casa (Trieste)</h1>
+    <div class="column">
+        <label class="label" for="price">Prezzo</label>
+        <span class="input">
+            <span class="icon">€</span>
+            <input type="text" name="price" id="price"/>
+        </span>
+    </div>
+    <div class="column">
+        <label class="label" for="sqm">Metratura</label>
+        <span class="input">
+            <span class="icon">m²</span>
+            <input type="text" name="sqm" id="sqm"/>
+        </span>
+    </div>
+    <div class="column">
+        <label class="label" for="layout">
+            Disposizione delle mura interne, organizzazione degli spazi
+        </label>
+        <span class="input">
+            <select name="layout" id="layout">
+                <option value="Bad">
+                    Cattivo - colonne in mezzo alla stanza, lunghi
+                    corridoi, disposizione completamente inefficiente
+                </option>
+                <option value="Good" selected>
+                    Buono - disposizione non ottimale ma vivibile,
+                    stanze troppo piccole o posizioni sconvenienti
+                </option>
+                <option value="Excellent">
+                    Ottimo - disposizione perfetta rispetto allo spazio
+                    disponibile
+                </option>
+            </select>
+        </span>
+    </div>
+    <div class="column">
+        <label class="label" for="area">
+            Zona o quartiere
+        </label>
+        <span class="input">
+            <select name="area" id="area">
+                <option value="Bad">
+                    Cattivo - quartiere periferico (Roiano) o con
+                    bassa reputazione (San Giacomo)
+                </option>
+                <option value="Good" selected>
+                    Buono - quartiere ben collegato ma non centrale
+                    (Giardino pubblico, Università)
+                </option>
+                <option value="Excellent">
+                    Ottimo - Contro, San Vito ecc.
+                </option>
+            </select>
+        </span>
+    </div>
+    <div class="column">
+        <label class="label" for="view">
+            Vista e luminosità
+        </label>
+        <span class="input">
+            <select name="view" id="view">
+                <option value="Bad">
+                    Cattivo - finestre solo sulla corte interna
+                    illuminazione mediocre
+                </option>
+                <option value="Good" selected>
+                    Buono - almeno una finestra di buone dimensioni
+                    sulla strada o giardino
+                </option>
+                <option value="Excellent">
+                    Ottimo - la maggiorparte delle finestre
+                    sulla strada e generalmente buona illuminazione
+                </option>
+            </select>
+        </span>
+    </div>
+    <div class="column">
+        <label class="label" for="condition">
+            Condizione dell'immobile
+        </label>
+        <span class="input">
+            <select name="condition" id="condition">
+                <option value="Bad">
+                    Cattivo - da ristrutturare completamente o quasi
+                </option>
+                <option value="Good" selected>
+                    Buono - abitabile, preferibilmente con qualche miglioria
+                </option>
+                <option value="Excellent">
+                    Ottimo - perfettamente abitabile, senza necessità di alcun intervento
+                </option>
+            </select>
+        </span>
+    </div>
+    <div class="column">
+        <label class="label" for="floor">
+            Piano
+        </label>
+        <span class="input">
+            <select name="floor" id="floor">
+                <option value="0">Terra</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4+</option>
+            </select>
+        </span>
+    </div>
+    <div class="column">
+        <label class="label" for="elevator">
+            Ascensore
+        </label>
+        <span class="input">
+            <select name="elevator" id="elevator">
+                <option value="true">Con ascensore</option>
+                <option value="false">Senza ascensore</option>
+            </select>
+        </span>
+    </div>
+    <div></div>
+    <div></div>
+    <button id="calc" class="button">Calcola</button>
+    <div></div>
+    <div></div>
+    <div class="result">
+        <h4 class="title">Voto Lorenzo</h4>
+        <h2 class="score" id="score">-</h2>
+    </div>
+    <div class="result">
+        <h4 class="title">Gradimento mercato</h4>
+        <h2 class="score" id="market-score">-</h2>
+    </div>
+    <div></div>
+    <div></div>
+</div>
+<script src="./index.js"></script>
+</body>
+</html>
