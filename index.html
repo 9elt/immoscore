@@ -16,6 +16,7 @@
             <input type="text" name="price" id="price"/>
         </span>
     </div>
+    <div class="hr"></div>
     <div class="column">
         <label class="label" for="sqm">Metratura</label>
         <span class="input">
@@ -23,6 +24,31 @@
             <input type="text" name="sqm" id="sqm"/>
         </span>
     </div>
+    <div class="hr"></div>
+    <div class="column">
+        <label class="label" for="area">
+            Zona o quartiere
+        </label>
+        <span class="input">
+            <select name="area" id="area">
+                <option value="Terrible" disabled>
+                    Terribile - quartiere con bassa reputazione o
+                    molto lontano dal centro (San Giacomo, Rozzol)
+                </option>
+                <option value="Bad">
+                    Cattivo - quartiere periferico (Roiano, Stazione)
+                </option>
+                <option value="Good" selected>
+                    Buono - quartiere ben collegato ma non centrale
+                    (Giardino pubblico, Università)
+                </option>
+                <option value="Excellent">
+                    Ottimo - Centro, San Vito, Campi Elisi.
+                </option>
+            </select>
+        </span>
+    </div>
+    <div class="hr"></div>
     <div class="column">
         <label class="label" for="layout">
             Disposizione delle mura interne, organizzazione degli spazi
@@ -30,8 +56,8 @@
         <span class="input">
             <select name="layout" id="layout">
                 <option value="Bad">
-                    Cattivo - colonne in mezzo alla stanza, lunghi
-                    corridoi, disposizione completamente inefficiente
+                    Cattivo - disposizione completamente inefficiente,
+                    colonne in mezzo alla stanza, lunghi corridoi
                 </option>
                 <option value="Good" selected>
                     Buono - disposizione non ottimale ma vivibile,
@@ -44,26 +70,7 @@
             </select>
         </span>
     </div>
-    <div class="column">
-        <label class="label" for="area">
-            Zona o quartiere
-        </label>
-        <span class="input">
-            <select name="area" id="area">
-                <option value="Bad">
-                    Cattivo - quartiere periferico (Roiano, Stazione)
-                    o con bassa reputazione (San Giacomo)
-                </option>
-                <option value="Good" selected>
-                    Buono - quartiere ben collegato ma non centrale
-                    Giardino pubblico, Università
-                </option>
-                <option value="Excellent">
-                    Ottimo - Centro, San Vito, Campi Elisi.
-                </option>
-            </select>
-        </span>
-    </div>
+    <div class="hr"></div>
     <div class="column">
         <label class="label" for="view">
             Vista e luminosità
@@ -71,7 +78,7 @@
         <span class="input">
             <select name="view" id="view">
                 <option value="Bad">
-                    Cattivo - finestre solo sulla corte interna
+                    Cattivo - finestre sulla corte interna e/o
                     illuminazione mediocre
                 </option>
                 <option value="Good" selected>
@@ -85,6 +92,7 @@
             </select>
         </span>
     </div>
+    <div class="hr"></div>
     <div class="column">
         <label class="label" for="condition">
             Condizione dell'immobile
@@ -103,20 +111,24 @@
             </select>
         </span>
     </div>
+    <div class="hr"></div>
     <div class="column">
         <label class="label" for="floor">
             Piano
         </label>
         <span class="input">
             <select name="floor" id="floor">
+                <option value="S" disabled>Sotterraneo</option>
                 <option value="0">Terra</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4+</option>
+                <option value="M" disabled>Mansarda</option>
             </select>
         </span>
     </div>
+    <div class="hr"></div>
     <div class="column">
         <label class="label" for="elevator">
             Ascensore
@@ -128,13 +140,19 @@
             </select>
         </span>
     </div>
-    <div></div>
-    <div></div>
+    <div class="hr"></div>
     <button id="calc" class="button">Calcola</button>
-    <div></div>
-    <div></div>
+    <div class="hr"></div>
+    <div class="sqm">
+        <p>
+            Prezzo base: <span id="result-sqm">-</span> €/m²
+        </p>
+        <p>
+            Prezzo finale: <span id="result-relative-sqm">-</span> €/m²
+        </p>
+    </div>
     <div class="result">
-        <h4 class="title">Voto Lorenzo</h4>
+        <h4 class="title">Gradimento Lorenzo</h4>
         <h2 class="score" id="score">-</h2>
     </div>
     <div class="result">

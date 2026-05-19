@@ -55,14 +55,16 @@ const elevatorSelect = document.querySelector("#elevator");
 const calcButton = document.querySelector("#calc");
 const scoreElement = document.querySelector("#score");
 const marketScoreElement = document.querySelector("#market-score");
+const resultSqmElement = document.querySelector("#result-sqm");
+const resultSqmRelativeElement = document.querySelector("#result-relative-sqm");
 
 calcButton.addEventListener("click", () => {
     const price = Number(priceInput.value.replace(/[^0-9]/g, ""));
     const sqm = Number(sqmInput.value.replace(/[^0-9]/g, ""));
-    const layout = Score[layoutSelect.value];
-    const area = Score[areaSelect.value];
-    const view = Score[viewSelect.value];
-    const condition = Score[conditionSelect.value];
+    const layoutScore = Score[layoutSelect.value];
+    const areaScore = Score[areaSelect.value];
+    const viewScore = Score[viewSelect.value];
+    const conditionScore = Score[conditionSelect.value];
     const floor = Number(floorSelect.value);
     const elevator = elevatorSelect.value === "true";
 
@@ -80,30 +82,69 @@ calcButton.addEventListener("click", () => {
         return;
     }
 
-    const result = calcScore({ price, sqm, layout, area, view, condition, floor, elevator });
+    const result = calcScore({
+        price,
+        sqm,
+        layoutScore,
+        areaScore,
+        viewScore,
+        conditionScore,
+        floor,
+        elevator
+    });
 
     scoreElement.innerHTML = result.score;
+
+    if (result.score >= 80) {
+        scoreElement.parentElement.className = "result green";
+    }
+    else if (result.score >= 70) {
+        scoreElement.parentElement.className = "result yellow";
+    }
+    else if (result.score >= 60) {
+        scoreElement.parentElement.className = "result orange";
+    }
+    else {
+        scoreElement.parentElement.className = "result red";
+    }
+
     marketScoreElement.innerHTML = result.marketScore;
+
+    if (result.marketScore >= 80) {
+        marketScoreElement.parentElement.className = "result green";
+    }
+    else if (result.marketScore >= 70) {
+        marketScoreElement.parentElement.className = "result yellow";
+    }
+    else if (result.marketScore >= 60) {
+        marketScoreElement.parentElement.className = "result orange";
+    }
+    else {
+        marketScoreElement.parentElement.className = "result red";
+    }
+
+    resultSqmElement.innerHTML = result.priceSqm;
+    resultSqmRelativeElement.innerHTML = result.priceSqmRelative;
 });
 
 function calcScore({
     price,
     sqm,
-    layout,
-    area,
-    view,
-    condition,
+    layoutScore,
+    areaScore,
+    viewScore,
+    conditionScore,
     floor,
     elevator,
 }) {
     const priceSqm = price / sqm;
 
-    const access = elevator || floor < 2 ? Score.Excellent :
+    const accessScore = elevator || floor < 2 ? Score.Excellent :
         floor < 3 ? Score.Good :
             Score.Bad;
 
-    const extraExpenseSqm = condition === Score.Bad ? 900 :
-        condition === Score.Good ? 250 :
+    const extraExpenseSqm = conditionScore === Score.Bad ? 900 :
+        conditionScore === Score.Good ? 250 :
             50;
 
     const priceSqmRelative = priceSqm + extraExpenseSqm;
@@ -124,26 +165,29 @@ function calcScore({
         ))
     );
 
-    const size = Math.min(Math.max((sqm - 50) * 5, 0), 100);
+    const sizeScore = Math.min(Math.max((sqm - 50) * 5, 0), 100);
 
     const score = (
-        area * 0.5 +
-        access * 0.25 +
-        layout * 0.75 +
-        view * 0.75 +
-        size * 1 +
+        areaScore * 0.75 +
+        accessScore * 0.25 +
+        layoutScore * 0.75 +
+        viewScore * 0.75 +
+        sizeScore * 1 +
         priceScore * 1
-    ) / 4.25;
+    ) / 4.5;
 
     const marketScore = (
-        area * 1 +
-        view * 0.5 +
-        layout * 0.5 +
-        access * 0.5
+        areaScore * 1 +
+        viewScore * 0.5 +
+        layoutScore * 0.5 +
+        accessScore * 0.5
     ) / 2.5;
 
     return {
         score: Math.floor(score),
         marketScore: Math.floor(marketScore),
+        priceSqm: Math.floor(priceSqm),
+        priceSqmRelative: Math.floor(priceSqmRelative),
+        totalPrice,
     };
 }
