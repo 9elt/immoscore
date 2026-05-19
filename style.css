@@ -58,6 +58,7 @@ body {
     width: 100%;
     border: 0;
     font-size: 32px;
+    background-color: #fff;
 }
 
 .input>select {
