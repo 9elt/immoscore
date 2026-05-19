@@ -45,12 +45,13 @@ body {
     padding: 12px;
     font-size: 32px;
     border: 1px solid #888;
-    border-radius: 10px;
+    border-radius: 18px;
     gap: 12px;
+    background-color: #f3f3f3;
 }
 
 .input:focus-within {
-    outline: 1px solid #04a;
+    outline: 2px solid #04f;
 }
 
 .input>input,
@@ -58,7 +59,7 @@ body {
     width: 100%;
     border: 0;
     font-size: 32px;
-    background-color: #fff;
+    background-color: #f3f3f3;
 }
 
 .input>select {
@@ -75,13 +76,13 @@ body {
     outline: 0;
     font-size: 24px;
     padding: 32px 12px;
-    border-radius: 12px;
+    border-radius: 18px;
     background-color: #353a60;
     color: #fff;
 }
 
 .button:focus {
-    outline: 1px solid #04a;
+    outline: 2px solid #04f;
 }
 
 .sqm {
@@ -92,10 +93,11 @@ body {
 }
 
 .result {
-    background-color: #f0f0f0;
-    border-radius: 16px;
+    background-color: #f3f3f3;
+    color: #555;
+    border-radius: 18px;
     padding: 12px;
-    border: 1px solid currentColor;
+    border: 2px solid currentColor;
 }
 
 .result.red {
